@@ -8,7 +8,7 @@ import { colors } from "@/lib/constants/colors"
 import { wrap } from "framer-motion"
 
 // ─── Data Types & Source ──────────────────────────────────────────────────
-type FilterType = "ALL" | "NEET" | "JEE" | "CLASSES 6-10"
+type FilterType = "ALL" | "NEET" | "JEE" | "CET"
 
 interface ResultData {
   id: string
@@ -23,7 +23,7 @@ interface ResultData {
 const mockResults: ResultData[] = [
   {
     id: "1",
-    name: "Tanmay Jagga",
+    name: "Tanmay ",
     exam: "NEET-UG '25",
     rank: "AIR 74",
     category: "NEET",
@@ -31,7 +31,7 @@ const mockResults: ResultData[] = [
   },
   {
     id: "2",
-    name: "Aritro Ray",
+    name: "Rohit",
     exam: "JEE Adv. '25",
     rank: "AIR 50",
     category: "JEE",
@@ -39,24 +39,24 @@ const mockResults: ResultData[] = [
   },
   {
     id: "3",
-    name: "Charuvrat Bains",
-    exam: "IESO 2025",
-    rank: "Silver",
-    category: "CLASSES 6-10",
+    name: "Mohit",
+    exam: "ISER",
+    rank: "AIR 600",
+    category: "JEE",
     image: "/Photos/result/latest-result.png",
   },
   {
     id: "4",
-    name: "Aabhineet Patn...",
-    exam: "CBSE 10th, '25",
+    name: "Shreya",
+    exam: "NDA, '23",
     score: "99.4%",
-    rank: "Topper",
-    category: "CLASSES 6-10",
+    rank: "AIR 400",
+    category: "CET",
     image: "/Photos/result/latest-result.png",
   },
   {
     id: "5",
-    name: "Pragya Poonia",
+    name: "Pragya ",
     exam: "NEET-UG '25",
     rank: "AIR 1341",
     category: "NEET",
@@ -64,7 +64,7 @@ const mockResults: ResultData[] = [
   },
   {
     id: "6",
-    name: "Arka Banerjee",
+    name: "Saee",
     exam: "JEE Adv. '25",
     rank: "AIR 395",
     category: "JEE",
@@ -85,7 +85,8 @@ function Counter({ from = 0, to, duration = 2 }: { from?: number; to: number; du
       ease: "easeOut",
       onUpdate(value) {
         if (nodeRef.current) {
-          nodeRef.current.textContent = Math.round(value).toString()
+          const rounded = Math.round(value)
+          nodeRef.current.textContent = rounded === to ? `${rounded} +` : rounded.toString()
         }
       },
     })
@@ -97,7 +98,7 @@ function Counter({ from = 0, to, duration = 2 }: { from?: number; to: number; du
 
 export function ResultsSection() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("ALL")
-  const filters: FilterType[] = ["ALL", "NEET", "JEE", "CLASSES 6-10"]
+  const filters: FilterType[] = ["ALL", "NEET", "JEE", "CET"]
 
   const filteredResults = mockResults.filter(
     (item) => activeFilter === "ALL" || item.category === activeFilter
@@ -174,7 +175,7 @@ export function ResultsSection() {
               <Counter to={185} />
             </h3>
             <p className="text-sm font-medium tracking-wide" style={{ color: colors.foreground.muted }}>
-              JEE-Advanced
+              JEE
             </p>
           </div>
           <div className="flex flex-col items-center justify-center space-y-2">
@@ -182,7 +183,7 @@ export function ResultsSection() {
               <Counter to={925} />
             </h3>
             <p className="text-sm font-medium tracking-wide" style={{ color: colors.foreground.muted }}>
-              JEE-Main
+              MHTCET
             </p>
           </div>
         </div>
@@ -273,7 +274,7 @@ export function ResultsSection() {
                   {item.name}
                 </h4>
                 <p className="text-sm font-medium" style={{ color: colors.foreground.muted }}>
-                  Online Classroom Course
+                  Classroom Course
                 </p>
                 <div 
                   className="mt-2 text-2xl font-black"

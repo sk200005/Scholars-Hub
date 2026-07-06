@@ -158,10 +158,10 @@ const PORTFOLIO = [
 // ─── Team data ────────────────────────────────────────────────────────────────
 
 const TEAM = [
-  { name: "Alex Johnson", role: "Creative Director" },
-  { name: "Sam Taylor", role: "Lead Designer" },
-  { name: "Jordan Smith", role: "Senior Developer" },
-  { name: "Casey Brown", role: "Project Manager" },
+  { name: "ROHIT ", role: "PHYSICS FACULTY" },
+  { name: "VIRAT", role: "CHEMISTRY FACULTY" },
+  { name: "YUVRAJ", role: "MATHEMATICS FACULTY" },
+  { name: "MAHENDRA", role: "BIOLOGY FACULTY" },
 ] as const
 
 // ─── Testimonial data ─────────────────────────────────────────────────────────
@@ -169,27 +169,27 @@ const TEAM = [
 const TESTIMONIALS = [
   {
     quote:
-      "Working with this team transformed our brand. They understood our vision perfectly and delivered beyond our expectations.",
-    author: "Sarah Johnson",
-    company: "CEO, TechStart",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend sed mauris sed commodo.",
+    author: "Siddharth",
+    company: "VNIT Nagpur",
   },
   {
     quote:
-      "The attention to detail and creative solutions provided by the team helped us increase our conversion rate by 40%.",
-    author: "Michael Chen",
-    company: "Marketing Director, GrowthCo",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend sed mauris sed commodo.",
+    author: "Yash",
+    company: "COEP",
   },
   {
     quote:
-      "Their strategic approach to design not only improved our user experience but also strengthened our brand identity.",
-    author: "Emma Rodriguez",
-    company: "Product Manager, InnovateLabs",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend sed mauris sed commodo.",
+    author: "Harshal",
+    company: "PICT",
   },
   {
     quote:
-      "From concept to execution, the team demonstrated exceptional skill and professionalism. Highly recommended!",
-    author: "David Kim",
-    company: "Founder, NextWave",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend sed mauris sed commodo.",
+    author: "Rohan",
+    company: "NIT Rourkela",
   },
 ] as const
 
@@ -351,6 +351,8 @@ export function DesignAgency() {
 
         {/* ── Courses Showcase ────────────────────────────────────────────────── */}
         <CoursesSection />
+
+        <div className="w-full h-12 md:h-20 lg:h-28" />
 
         {/* ── Why Us / Sticky Cards ───────────────────────────────────────────── */}
         <WhyUsSection />
@@ -645,8 +647,8 @@ export function DesignAgency() {
             {/* Section header */}
             <SectionHeader
               badge="Testimonials"
-              title="What Our Clients Say"
-              description="Don't just take our word for it — hear from some of our satisfied clients"
+              title="Student's Testimonials"
+              description="Don't just take our word for it — hear from some of our students"
               badgeStyle={{
                 backgroundColor: colors.surface.elevated,
                 boxShadow: shadows.xs,
@@ -727,11 +729,10 @@ export function DesignAgency() {
                 className="text-3xl font-bold tracking-tight md:text-4xl"
                 style={{ color: colors.foreground.DEFAULT }}
               >
-                Let's Work Together
+                Connect with us
               </h2>
               <p className="max-w-[600px] text-base md:text-xl" style={{ color: colors.foreground.muted }}>
-                Ready to start your next project? Get in touch with us to discuss how we can help bring
-                your vision to life.
+                Ready to shape future with Scholars hub.
               </p>
 
               {/* Contact details */}
@@ -740,17 +741,17 @@ export function DesignAgency() {
                   {
                     icon: <MapPin size={20} strokeWidth={1.5} />,
                     label: "Our Location",
-                    value: "123 Design Street, Creative City, 10001",
+                    value: "KatheGalli, Dwarka, Nashik, Mahhrashtra",
                   },
                   {
                     icon: <Mail size={20} strokeWidth={1.5} />,
                     label: "Email Us",
-                    value: "hello@designstudio.com",
+                    value: "scholarshub@gmail.com",
                   },
                   {
                     icon: <Phone size={20} strokeWidth={1.5} />,
                     label: "Call Us",
-                    value: "+1 (555) 123-4567",
+                    value: "+91 987654321",
                   },
                 ].map((item) => (
                   <motion.div
@@ -809,41 +810,26 @@ export function DesignAgency() {
               }}
             >
               <h3 className="text-xl font-bold" style={{ color: colors.foreground.DEFAULT }}>
-                Send Us a Message
+                Contact Our Experts
               </h3>
               <p className="mt-1 text-sm" style={{ color: colors.foreground.muted }}>
                 Fill out the form below and we'll get back to you shortly.
               </p>
               <form className="mt-6 space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="contact-first-name"
-                      className="text-sm font-medium"
-                      style={{ color: colors.foreground.DEFAULT }}
-                    >
-                      First name
-                    </label>
-                    <Input
-                      id="contact-first-name"
-                      placeholder="Enter your first name"
-                      className="rounded-xl"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="contact-last-name"
-                      className="text-sm font-medium"
-                      style={{ color: colors.foreground.DEFAULT }}
-                    >
-                      Last name
-                    </label>
-                    <Input
-                      id="contact-last-name"
-                      placeholder="Enter your last name"
-                      className="rounded-xl"
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <label
+                    htmlFor="contact-email"
+                    className="text-sm font-medium"
+                    style={{ color: colors.foreground.DEFAULT }}
+                  >
+                    Name
+                  </label>
+                  <Input
+                    id="contact-email"
+                    type="email"
+                    placeholder="Enter your name"
+                    className="rounded-xl"
+                  />
                 </div>
                 <div className="space-y-2">
                   <label
@@ -876,7 +862,7 @@ export function DesignAgency() {
                 </div>
                 <motion.div {...gestures.buttonPress}>
                   <Button type="submit" className="w-full rounded-xl">
-                    Send Message
+                    Connect Us
                   </Button>
                 </motion.div>
               </form>
@@ -898,8 +884,7 @@ export function DesignAgency() {
           <div className="space-y-4">
             <BrandLogo isDark />
             <p className="text-sm text-slate-400 mt-4 leading-relaxed">
-              We create beautiful, functional designs that help businesses grow and connect with their
-              audience.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend sed mauris sed commodo. Nam at turpis euismod orci imperdiet maximus.
             </p>
             <div className="flex gap-3 pt-4">
               {FOOTER_SOCIALS.map((social) => (
@@ -939,25 +924,20 @@ export function DesignAgency() {
             />
           </div>
 
-          {/* Newsletter */}
+          {/* Location Map */}
           <div className="space-y-4">
             <h3 className="text-base font-semibold text-slate-100">
-              Subscribe to our newsletter
+              Find Us Here
             </h3>
-            <p className="text-sm text-slate-400">
-              Stay updated with our latest projects, design tips, and company news.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-2 mt-4">
-              <Input
-                id="newsletter-email"
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 rounded-xl bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus-visible:ring-slate-400"
+            <div className="relative w-full h-48 overflow-hidden rounded-xl border border-white/10 mt-4 group">
+              <Image
+                src="/Photos/map/map-image.png"
+                alt="Scholars Hub Location Map"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 400px"
               />
-              <Button type="submit" className="rounded-xl bg-white text-[#111827] hover:bg-slate-200 font-semibold">
-                Subscribe
-              </Button>
-            </form>
+            </div>
           </div>
         </motion.div>
 

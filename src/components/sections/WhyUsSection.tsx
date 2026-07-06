@@ -78,7 +78,7 @@ const StickyFeatureCard = React.memo(({ feature, index }: { feature: FeatureCard
   return (
     <div
       className="sticky w-full will-change-transform [transform:translateZ(0)]"
-      style={{ top: `${20 + index * 24}px` }} // Staggered top position for stacking
+      style={{ top: `${130 + index * 24}px` }} // Staggered top position for stacking
     >
       <div className={cn(
         "group relative flex flex-col h-auto w-full overflow-hidden rounded-[28px] border border-white/10",
@@ -141,7 +141,7 @@ export const WhyUsSection = ({
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start px-4 md:px-6">
         
         {/* Left Column: Sticky Content */}
-        <div className="flex flex-col gap-6 lg:sticky lg:top-20">
+        <div className="flex flex-col gap-6 lg:sticky lg:top-32">
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-muted/50 px-3 py-1 text-sm">
             <div className="h-2 w-2 rounded-full bg-green-500" />
             <span className="text-muted-foreground">{tagLabel}</span>
