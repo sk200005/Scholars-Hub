@@ -180,14 +180,14 @@ export const stagger = {
 // ---------------------------------------------------------------------------
 
 export const viewport = {
-  /** Default scroll trigger — enters at 20% visible */
-  once:   { once: true, amount: 0.2 },
+  /** Default scroll trigger — enters when 250px visible inside viewport, repeats every time */
+  once:   { once: false, margin: "0px 0px -250px 0px" },
   /** Repeat trigger — fires on every scroll-in */
-  repeat: { once: false, amount: 0.2 },
-  /** Generous trigger — enters at 10% visible */
-  generous: { once: true, amount: 0.1 },
-  /** Strict trigger — enters at 40% visible */
-  strict: { once: true, amount: 0.4 },
+  repeat: { once: false, margin: "0px 0px -250px 0px" },
+  /** Generous trigger — enters immediately as it touches viewport */
+  generous: { once: false, margin: "0px 0px -50px 0px" },
+  /** Strict trigger — enters when deeply visible (350px) */
+  strict: { once: false, margin: "0px 0px -350px 0px" },
 } as const;
 
 // ---------------------------------------------------------------------------

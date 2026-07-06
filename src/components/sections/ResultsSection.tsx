@@ -23,7 +23,7 @@ interface ResultData {
 const mockResults: ResultData[] = [
   {
     id: "1",
-    name: "Tanmay ",
+    name: "John Doe",
     exam: "NEET-UG '25",
     rank: "AIR 74",
     category: "NEET",
@@ -31,7 +31,7 @@ const mockResults: ResultData[] = [
   },
   {
     id: "2",
-    name: "Rohit",
+    name: "John Doe",
     exam: "JEE Adv. '25",
     rank: "AIR 50",
     category: "JEE",
@@ -39,7 +39,7 @@ const mockResults: ResultData[] = [
   },
   {
     id: "3",
-    name: "Mohit",
+    name: "John Doe",
     exam: "ISER",
     rank: "AIR 600",
     category: "JEE",
@@ -47,7 +47,7 @@ const mockResults: ResultData[] = [
   },
   {
     id: "4",
-    name: "Shreya",
+    name: "John Doe",
     exam: "NDA, '23",
     score: "99.4%",
     rank: "AIR 400",
@@ -56,7 +56,7 @@ const mockResults: ResultData[] = [
   },
   {
     id: "5",
-    name: "Pragya ",
+    name: "John Doe",
     exam: "NEET-UG '25",
     rank: "AIR 1341",
     category: "NEET",
@@ -64,7 +64,7 @@ const mockResults: ResultData[] = [
   },
   {
     id: "6",
-    name: "Saee",
+    name: "John Doe",
     exam: "JEE Adv. '25",
     rank: "AIR 395",
     category: "JEE",
@@ -242,7 +242,7 @@ export function ResultsSection() {
           {[...filteredResults, ...filteredResults].map((item, index) => (
             <motion.div
               key={`${item.id}-${index}`}
-              className="group relative flex w-[280px] shrink-0 flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[320px]"
+              className="group relative flex w-[220px] shrink-0 flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[320px]"
               style={{ border: `1px solid ${colors.border.DEFAULT}` }}
               whileHover={{ 
                 borderColor: colors.primary.DEFAULT, 
@@ -250,13 +250,13 @@ export function ResultsSection() {
               }}
             >
               {/* Card Image */}
-              <div className="relative h-[240px] w-full overflow-hidden bg-muted/50">
+              <div className="relative h-[200px] md:h-[280px] w-full overflow-hidden bg-muted/50">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 280px, 320px"
+                  sizes="(max-width: 768px) 220px, 320px"
                 />
                 
                 {/* Category Badge overlay */}

@@ -158,10 +158,10 @@ const PORTFOLIO = [
 // ─── Team data ────────────────────────────────────────────────────────────────
 
 const TEAM = [
-  { name: "ROHIT ", role: "PHYSICS FACULTY" },
-  { name: "VIRAT", role: "CHEMISTRY FACULTY" },
-  { name: "YUVRAJ", role: "MATHEMATICS FACULTY" },
-  { name: "MAHENDRA", role: "BIOLOGY FACULTY" },
+  { name: "John Doe ", role: "PHYSICS FACULTY" },
+  { name: "John Doe", role: "CHEMISTRY FACULTY" },
+  { name: "John Doe", role: "MATHEMATICS FACULTY" },
+  { name: "John Doe", role: "BIOLOGY FACULTY" },
 ] as const
 
 // ─── Testimonial data ─────────────────────────────────────────────────────────
@@ -278,55 +278,61 @@ export function DesignAgency() {
       </motion.header>
 
       {/* ── Mobile Menu ─────────────────────────────────────────────────────── */}
+      {/* ── Mobile Menu (Sidebar) ───────────────────────────────────────────── */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            key="mobile-menu"
-            variants={variants.fade}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="fixed inset-0 z-50 flex flex-col md:hidden"
-            style={{ backgroundColor: colors.background.DEFAULT }}
-          >
-            {/* Mobile menu header */}
-            <div className="container flex h-20 items-center justify-between">
-              <BrandLogo onClick={toggleMenu} />
-              <button onClick={toggleMenu} aria-label="Close menu">
-                <X size={24} strokeWidth={1.5} />
-              </button>
-            </div>
+          <>
+            {/* Dark Backdrop Overlay */}
+            <motion.div
+              key="mobile-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+              onClick={toggleMenu}
+            />
 
-            {/* Mobile nav links */}
-            <motion.nav
-              variants={variants.staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="container grid gap-2 pb-8 pt-6"
+            {/* Slide-out Sidebar */}
+            <motion.div
+              key="mobile-sidebar"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 left-0 z-50 flex w-[85%] max-w-[320px] flex-col bg-[#f4f6f9] shadow-2xl md:hidden"
             >
-              {["Services", "Work", "About", "Clients", "Contact"].map((item) => (
-                <motion.div key={item} variants={variants.fadeUp}>
+              {/* Sidebar Header */}
+              <div className="flex h-20 shrink-0 items-center justify-between border-b border-slate-200 px-6 bg-[#f4f6f9]">
+                <BrandLogo onClick={toggleMenu} />
+                <button onClick={toggleMenu} aria-label="Close menu" className="text-slate-700 transition-colors hover:text-black">
+                  <X size={24} strokeWidth={2} />
+                </button>
+              </div>
+
+              {/* Sidebar Nav Links */}
+              <nav className="flex flex-1 flex-col overflow-y-auto">
+                {["Classroom Courses", "Online Courses", "Test Series", "Results", "Study Materials", "Scholarships", "More"].map((item) => (
                   <Link
-                    href={`#${item.toLowerCase()}`}
-                    className="flex items-center justify-between rounded-xl px-4 py-3 text-lg font-medium transition-colors hover:bg-surface"
+                    key={item}
+                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="flex items-center justify-between border-b border-slate-200 px-6 py-5 text-[15px] font-semibold text-slate-800 transition-colors hover:bg-slate-200/50"
                     onClick={toggleMenu}
-                    style={{ color: colors.foreground.DEFAULT }}
                   >
                     {item}
-                    <ChevronRight size={16} strokeWidth={1.5} color={colors.foreground.muted} />
+                    <ChevronRight size={18} strokeWidth={2.5} className="text-slate-600" />
                   </Link>
-                </motion.div>
-              ))}
-              <motion.div variants={variants.fadeUp} className="flex flex-col gap-3 pt-4">
-                <Button variant="outline" className="w-full rounded-xl">
-                  Log In
+                ))}
+              </nav>
+
+              {/* Sidebar Footer (Login) */}
+              <div className="shrink-0 border-t border-slate-200 bg-[#f4f6f9] p-6">
+                <Button className="h-12 w-full rounded-xl bg-[#0064e1] text-base font-semibold text-white hover:bg-[#0052cc]">
+                  Login / Register
                 </Button>
-                <Button className="w-full rounded-xl">
-                  Get Started
-                </Button>
-              </motion.div>
-            </motion.nav>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -810,10 +816,10 @@ export function DesignAgency() {
               }}
             >
               <h3 className="text-xl font-bold" style={{ color: colors.foreground.DEFAULT }}>
-                Contact Our Experts
+                Get Connected With Our Experts
               </h3>
               <p className="mt-1 text-sm" style={{ color: colors.foreground.muted }}>
-                Fill out the form below and we'll get back to you shortly.
+                or Call +91 9876543210.
               </p>
               <form className="mt-6 space-y-4">
                 <div className="space-y-2">
@@ -862,7 +868,7 @@ export function DesignAgency() {
                 </div>
                 <motion.div {...gestures.buttonPress}>
                   <Button type="submit" className="w-full rounded-xl">
-                    Connect Us
+                    Connect
                   </Button>
                 </motion.div>
               </form>

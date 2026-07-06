@@ -77,8 +77,8 @@ StatCard.displayName = "StatCard";
 const StickyFeatureCard = React.memo(({ feature, index }: { feature: FeatureCardType; index: number }) => {
   return (
     <div
-      className="sticky w-full will-change-transform [transform:translateZ(0)]"
-      style={{ top: `${130 + index * 24}px` }} // Staggered top position for stacking
+      className="w-full will-change-transform [transform:translateZ(0)] sticky top-[var(--sticky-top)]"
+      style={{ "--sticky-top": `${130 + index * 24}px` } as React.CSSProperties}
     >
       <div className={cn(
         "group relative flex flex-col h-auto w-full overflow-hidden rounded-[28px] border border-white/10",
@@ -133,9 +133,6 @@ export const WhyUsSection = ({
   secondaryActionLabel = "Learn More",
   className,
 }: Partial<WhyUsSectionProps>) => {
-  // Calculate a height for the scroll container to ensure all cards can stack
-  const scrollContainerHeight = `calc(100vh + ${featureCards.length * 100}px)`;
-
   return (
     <section className={cn("w-full bg-background text-foreground py-20 md:py-28", className)}>
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start px-4 md:px-6">
@@ -161,7 +158,7 @@ export const WhyUsSection = ({
         </div>
 
         {/* Right Column: Container for the sticky card stack */}
-        <div className="relative flex flex-col gap-4" style={{ height: scrollContainerHeight }}>
+        <div className="relative flex flex-col gap-6">
           {featureCards.map((feature, index) => (
             <StickyFeatureCard
               key={feature.title}
