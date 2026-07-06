@@ -832,7 +832,7 @@ export function DesignAgency() {
                   </label>
                   <Input
                     id="contact-email"
-                    type="email"
+                    type="text"
                     placeholder="Enter your name"
                     className="rounded-xl"
                   />
