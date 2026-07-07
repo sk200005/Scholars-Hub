@@ -361,7 +361,7 @@ export function DesignAgency() {
             alt="Scholars Hub Banner"
             width={2800}
             height={1200}
-            className="w-full h-auto object-cover"
+            className="w-full h-[180px] md:h-auto object-cover object-center"
             priority
           />
         </section>
