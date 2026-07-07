@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, animate, useInView } from "framer-motion";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
@@ -62,11 +62,52 @@ const DEFAULT_FEATURE_CARDS: FeatureCardType[] = [
 
 // --- Internal Sub-Components ---
 
+const AnimatedStat = ({ value }: { value: string }) => {
+  const ref = React.useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const [count, setCount] = React.useState(0);
+
+  const match = value.match(/^(\D*)(\d+)(.*)$/);
+  const prefix = match ? match[1] : "";
+  const num = match ? parseInt(match[2], 10) : 0;
+  const suffix = match ? match[3] : "";
+
+  React.useEffect(() => {
+    if (isInView) {
+      let startTime: number;
+      const duration = 2000; // 2 seconds
+      let animationFrame: number;
+
+      const update = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        
+        // Ease out exponential for a smooth deceleration
+        const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        
+        setCount(Math.floor(easeOut * num));
+        
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(update);
+        }
+      };
+      
+      animationFrame = requestAnimationFrame(update);
+      return () => cancelAnimationFrame(animationFrame);
+    }
+  }, [isInView, num]);
+
+  // Initial render shows full number for SSR/SEO, hydrates to 0 when out of view, animates when in view.
+  return <span ref={ref}>{prefix}{count || (isInView ? count : "0")}{suffix}</span>;
+};
+
 // StatCard using native Tailwind instead of missing Shadcn Card, memoized to prevent re-renders
 const StatCard = React.memo(({ value, label }: Stat) => (
   <div className="bg-muted/50 border border-border text-center rounded-xl shadow-sm">
     <div className="p-4 flex flex-col items-center justify-center">
-      <p className="text-3xl font-bold text-foreground">{value}</p>
+      <p className="text-3xl font-bold text-foreground">
+        <AnimatedStat value={value} />
+      </p>
       <p className="text-sm text-muted-foreground mt-1">{label}</p>
     </div>
   </div>

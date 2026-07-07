@@ -87,7 +87,7 @@ function Counter({ from = 0, to, duration = 2 }: { from?: number; to: number; du
       onUpdate(value) {
         if (nodeRef.current) {
           const rounded = Math.round(value)
-          nodeRef.current.textContent = rounded === to ? `${rounded} +` : rounded.toString()
+          nodeRef.current.textContent = rounded === to ? `${rounded}+` : rounded.toString()
         }
       },
     })
@@ -162,30 +162,36 @@ export function ResultsSection() {
         />
 
         {/* Stats Row */}
-        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="flex flex-col items-center justify-center space-y-2 border-border md:border-r md:pr-8">
-            <h3 className="text-5xl font-bold tracking-tighter" style={{ color: colors.primary.DEFAULT }}>
-              <Counter to={850} />
-            </h3>
-            <p className="text-sm font-medium tracking-wide" style={{ color: colors.foreground.muted }}>
-              NEET
-            </p>
+        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="bg-muted/50 border border-border text-center rounded-xl shadow-sm">
+            <div className="p-4 py-8 flex flex-col items-center justify-center">
+              <p className="text-4xl font-bold text-foreground">
+                <Counter to={850} />
+              </p>
+              <p className="text-sm text-muted-foreground mt-2 font-medium tracking-wide">
+                NEET
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col items-center justify-center space-y-2 border-border md:border-r md:pr-8">
-            <h3 className="text-5xl font-bold tracking-tighter" style={{ color: colors.primary.DEFAULT }}>
-              <Counter to={185} />
-            </h3>
-            <p className="text-sm font-medium tracking-wide" style={{ color: colors.foreground.muted }}>
-              JEE
-            </p>
+          <div className="bg-muted/50 border border-border text-center rounded-xl shadow-sm">
+            <div className="p-4 py-8 flex flex-col items-center justify-center">
+              <p className="text-4xl font-bold text-foreground">
+                <Counter to={185} />
+              </p>
+              <p className="text-sm text-muted-foreground mt-2 font-medium tracking-wide">
+                JEE
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <h3 className="text-5xl font-bold tracking-tighter" style={{ color: colors.primary.DEFAULT }}>
-              <Counter to={925} />
-            </h3>
-            <p className="text-sm font-medium tracking-wide" style={{ color: colors.foreground.muted }}>
-              MHTCET
-            </p>
+          <div className="bg-muted/50 border border-border text-center rounded-xl shadow-sm">
+            <div className="p-4 py-8 flex flex-col items-center justify-center">
+              <p className="text-4xl font-bold text-foreground">
+                <Counter to={925} />
+              </p>
+              <p className="text-sm text-muted-foreground mt-2 font-medium tracking-wide">
+                MHTCET
+              </p>
+            </div>
           </div>
         </div>
 
