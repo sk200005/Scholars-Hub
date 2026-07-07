@@ -124,8 +124,8 @@ StickyFeatureCard.displayName = "StickyFeatureCard";
 // --- Main Exported Component ---
 
 export const WhyUsSection = ({
-  tagLabel = "Why Choose Us",
-  title = "Unmatched Excellence in Education",
+  tagLabel = "Excellence in Education",
+  title = "Why Choose Scholars Hub ?",
   description = "Discover why thousands of students trust us to shape their academic futures. We provide the perfect environment for achieving top ranks.",
   stats = DEFAULT_STATS,
   featureCards = DEFAULT_FEATURE_CARDS,

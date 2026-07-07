@@ -21,7 +21,7 @@ export function BrandLogo({ onClick, isDark }: { onClick?: () => void; isDark?: 
         className={cn("text-xl font-bold", isDark ? "text-white" : "")} 
         style={!isDark ? { color: colors.foreground.DEFAULT } : undefined}
       >
-        Studio
+        ScholarsHub
       </span>
     </Link>
   )
