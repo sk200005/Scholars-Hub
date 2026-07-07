@@ -31,7 +31,7 @@ export function CourseCard({
   return (
     <div className="group relative flex h-full flex-col rounded-[24px] border border-slate-200 bg-white pt-[14px] shadow-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
       {/* Floating Badge */}
-      <div className="absolute -top-3 left-4 z-10 flex items-center gap-1.5 rounded-full bg-[#a855f7] px-3 py-1 text-[10px] font-bold tracking-wider uppercase text-white shadow-sm transition-transform duration-300 group-hover:scale-105 md:left-6 md:px-4 md:py-1.5 md:text-xs">
+      <div className="absolute -top-3 left-4 z-10 flex items-center gap-1.5 rounded-full bg-emerald-500 px-3 py-1 text-[10px] font-bold tracking-wider uppercase text-white shadow-sm transition-transform duration-300 group-hover:scale-105 md:left-6 md:px-4 md:py-1.5 md:text-xs">
         <PlayCircle className="h-3.5 w-3.5" />
         {badgeText}
       </div>

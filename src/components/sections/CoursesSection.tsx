@@ -35,21 +35,21 @@ export function CoursesSection() {
   const courses = [
     {
       id: 1,
-      title: "NEET Self-Study PRO course (CBT + Online Test Series): Target 2027",
-      classLevel: "12 Plus",
+      title: "JEE course : Target 2028",
+      classLevel: "11 Plus",
       duration: "1 year",
       targetAudience: "Class XI to XII Moving Students (Duration : 1 Year)",
     },
     {
       id: 2,
-      title: "NEET Self-Study PRO course (CBT + Online Test Series): Target 2026",
+      title: "NEET course : Target 2028",
       classLevel: "11 Plus",
       duration: "2 years",
       targetAudience: "Class X to XI Moving Students (Duration : 2 Years)",
     },
     {
       id: 3,
-      title: "JEE Self-Study PRO course (CBT + Online Test Series): Target 2027",
+      title: "MHTCET course : Target 2027",
       classLevel: "12 Plus",
       duration: "1 year",
       targetAudience: "Class XI to XII Moving Students (Duration : 1 Year)",

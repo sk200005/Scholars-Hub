@@ -45,6 +45,7 @@ import {
   LineChart,
   MessageSquare,
   Star,
+  Megaphone,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -232,22 +233,35 @@ export function DesignAgency() {
         animate={{ y: 0 }}
         transition={transitions.smooth}
         style={{
-          boxShadow: scrolled ? shadows.navScrolled : shadows.nav,
+          boxShadow: scrolled ? "0 10px 30px -10px rgba(0,0,0,0.15)" : "none",
         }}
-        className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       >
         <div className="container flex h-20 items-center justify-between border-x border-border">
-          {/* Logo */}
-          <BrandLogo />
+          {/* Left Section: Mobile Menu + Logo */}
+          <div className="flex items-center gap-4">
+            {/* Mobile menu toggle */}
+            <button
+              id="mobile-menu-toggle"
+              className="flex md:hidden"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+            >
+              <Menu size={28} strokeWidth={1.5} />
+            </button>
+
+            {/* Logo */}
+            <BrandLogo />
+          </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex gap-8">
-            {["Services", "Work", "About", "Clients", "Contact"].map((item) => (
+          <nav className="hidden md:flex items-center gap-8">
+            {["Home", "About Us", "Result", "Courses", "Contact us", "Gallery"].map((item) => (
               <Link
                 key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-base font-semibold transition-colors hover:text-primary"
-                style={{ color: colors.foreground.muted }}
+                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                className="relative text-[15px] font-medium text-slate-600 transition-colors hover:text-[#0064e1] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[#0064e1] after:transition-all hover:after:w-full"
               >
                 {item}
               </Link>
@@ -255,25 +269,25 @@ export function DesignAgency() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="outline" className="rounded-xl">
+          <div className="hidden md:flex items-center gap-3">
+            <Button variant="ghost" className="rounded-full font-semibold px-5 text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-all">
               Log In
             </Button>
-            <Button className="rounded-xl">
+            <Button className="rounded-full font-semibold px-6 bg-[#0064e1] hover:bg-[#0052cc] text-white shadow-[0_4px_14px_0_rgba(0,100,225,0.39)] hover:shadow-[0_6px_20px_rgba(0,100,225,0.23)] hover:-translate-y-0.5 transition-all duration-200">
               Get Started
             </Button>
           </div>
+        </div>
 
-          {/* Mobile menu toggle */}
-          <button
-            id="mobile-menu-toggle"
-            className="flex md:hidden"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-          >
-            <Menu size={28} strokeWidth={1.5} />
-          </button>
+        {/* Announcement Banner */}
+        <div className="relative w-full overflow-hidden bg-[#0f172a] px-4 py-2.5 flex items-center justify-center gap-3 border-t border-slate-800/50 shadow-inner">
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-emerald-500/10 opacity-30" />
+          <Megaphone size={20} className="text-amber-400 shrink-0 animate-pulse relative z-10" strokeWidth={2.5} />
+          <p className="text-[13px] md:text-[15px] font-medium text-slate-200 text-center relative z-10 tracking-wide">
+            <span className="text-amber-400 font-bold mr-2">ANNOUNCEMENT ✨</span>
+            New MHTCET course starting Soon...
+          </p>
+          <ArrowRight size={16} className="text-slate-400 shrink-0 ml-1 hidden sm:block relative z-10 transition-transform group-hover:translate-x-1" strokeWidth={2} />
         </div>
       </motion.header>
 
@@ -300,35 +314,38 @@ export function DesignAgency() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[85%] max-w-[320px] flex-col bg-[#f4f6f9] shadow-2xl md:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-[85%] max-w-[320px] flex-col bg-[#111827] shadow-2xl md:hidden"
             >
               {/* Sidebar Header */}
-              <div className="flex h-20 shrink-0 items-center justify-between border-b border-slate-200 px-6 bg-[#f4f6f9]">
-                <BrandLogo onClick={toggleMenu} />
-                <button onClick={toggleMenu} aria-label="Close menu" className="text-slate-700 transition-colors hover:text-black">
+              <div className="flex h-20 shrink-0 items-center justify-between border-b border-white/10 px-6 bg-[#111827]">
+                <BrandLogo onClick={toggleMenu} isDark />
+                <button onClick={toggleMenu} aria-label="Close menu" className="text-slate-400 transition-colors hover:text-white">
                   <X size={24} strokeWidth={2} />
                 </button>
               </div>
 
               {/* Sidebar Nav Links */}
-              <nav className="flex flex-1 flex-col overflow-y-auto">
-                {["Classroom Courses", "Online Courses", "Test Series", "Results", "Study Materials", "Scholarships", "More"].map((item) => (
+              <nav className="flex flex-1 flex-col overflow-y-auto py-2">
+                {["Home", "About Us", "Result", "Courses", "Contact us", "Gallery"].map((item) => (
                   <Link
                     key={item}
                     href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="flex items-center justify-between border-b border-slate-200 px-6 py-5 text-[15px] font-semibold text-slate-800 transition-colors hover:bg-slate-200/50"
+                    className="flex items-center justify-between border-b border-white/5 px-6 py-5 text-[15px] font-medium text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
                     onClick={toggleMenu}
                   >
                     {item}
-                    <ChevronRight size={18} strokeWidth={2.5} className="text-slate-600" />
+                    <ChevronRight size={18} strokeWidth={2.5} className="text-slate-500" />
                   </Link>
                 ))}
               </nav>
 
               {/* Sidebar Footer (Login) */}
-              <div className="shrink-0 border-t border-slate-200 bg-[#f4f6f9] p-6">
-                <Button className="h-12 w-full rounded-xl bg-[#0064e1] text-base font-semibold text-white hover:bg-[#0052cc]">
-                  Login / Register
+              <div className="shrink-0 border-t border-white/10 bg-[#111827] p-6 space-y-3">
+                <Button variant="outline" className="h-12 w-full rounded-xl border-white/20 bg-transparent text-base font-semibold text-white hover:bg-white/10 hover:text-white">
+                  Log In
+                </Button>
+                <Button className="h-12 w-full rounded-xl bg-[#0064e1] text-base font-semibold text-white hover:bg-[#0052cc] shadow-[0_4px_14px_0_rgba(0,100,225,0.39)]">
+                  Get Started
                 </Button>
               </div>
             </motion.div>

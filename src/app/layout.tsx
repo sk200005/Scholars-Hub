@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Modern creative design studio",
 };
 
+import FloatingActions from "@/components/ui/FloatingActions";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,6 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased overflow-x-clip`}
       >
         {children}
+        <FloatingActions />
       </body>
     </html>
   );
