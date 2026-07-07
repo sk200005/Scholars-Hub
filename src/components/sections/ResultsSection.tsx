@@ -169,7 +169,7 @@ export function ResultsSection() {
                 <Counter to={850} />
               </p>
               <p className="text-sm text-muted-foreground mt-2 font-medium tracking-wide">
-                NEET
+                NEET Selections
               </p>
             </div>
           </div>
@@ -179,7 +179,7 @@ export function ResultsSection() {
                 <Counter to={185} />
               </p>
               <p className="text-sm text-muted-foreground mt-2 font-medium tracking-wide">
-                JEE
+                JEE Selections
               </p>
             </div>
           </div>
@@ -189,7 +189,7 @@ export function ResultsSection() {
                 <Counter to={925} />
               </p>
               <p className="text-sm text-muted-foreground mt-2 font-medium tracking-wide">
-                MHTCET
+                MHTCET Selections
               </p>
             </div>
           </div>

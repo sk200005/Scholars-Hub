@@ -280,14 +280,14 @@ export function DesignAgency() {
         </div>
 
         {/* Announcement Banner */}
-        <div className="relative w-full overflow-hidden bg-[#0f172a] px-3 py-2.5 flex items-center justify-center gap-2 border-t border-slate-800/50 shadow-inner">
+        <div className="relative w-full overflow-hidden bg-[#0f172a] px-2 py-2 flex items-center justify-center gap-1.5 border-t border-slate-800/50 shadow-inner">
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-emerald-500/10 opacity-30" />
-          <Megaphone size={18} className="text-amber-400 shrink-0 animate-pulse relative z-10 md:w-5 md:h-5" strokeWidth={2.5} />
-          <p className="text-[11px] md:text-[15px] font-medium text-slate-200 text-center relative z-10 tracking-wide truncate whitespace-nowrap max-w-[85vw] md:max-w-none">
-            <span className="text-amber-400 font-bold mr-1.5 md:mr-2">ANNOUNCEMENT ✨</span>
+          <Megaphone size={14} className="text-amber-400 shrink-0 animate-pulse relative z-10 md:w-5 md:h-5" strokeWidth={2.5} />
+          <p className="text-[9px] min-[375px]:text-[10px] sm:text-[12px] md:text-[15px] font-medium text-slate-200 text-center relative z-10 tracking-tight md:tracking-wide whitespace-nowrap">
+            <span className="text-amber-400 font-bold mr-1 md:mr-2">ANNOUNCEMENT ✨</span>
             New MHTCET course starting Soon...
           </p>
-          <ArrowRight size={16} className="text-slate-400 shrink-0 ml-1 hidden sm:block relative z-10 transition-transform group-hover:translate-x-1" strokeWidth={2} />
+          <ArrowRight size={14} className="text-slate-400 shrink-0 ml-1 hidden sm:block relative z-10 transition-transform group-hover:translate-x-1 md:w-4 md:h-4" strokeWidth={2} />
         </div>
       </motion.header>
 
@@ -361,7 +361,7 @@ export function DesignAgency() {
             alt="Scholars Hub Banner"
             width={2800}
             height={1200}
-            className="w-full h-[240px] md:h-auto object-cover object-center"
+            className="w-full h-auto object-contain bg-muted/20"
             priority
           />
         </section>
