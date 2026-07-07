@@ -611,14 +611,14 @@ export function DesignAgency() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewport.once}
-                className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-6 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 md:grid-cols-3 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
               >
                 {TEAM.map((member) => (
                   <motion.div
                     key={member.name}
                     variants={variants.fadeUp}
                     whileHover={{ y: -8, transition: transitions.springSnappy }}
-                    className="group relative overflow-hidden rounded-2xl"
+                    className="group relative shrink-0 snap-center overflow-hidden rounded-2xl w-[260px] sm:w-auto"
                   >
                     <Image
                       src="/Photos/OurStory/SmallP/teacher.png"
@@ -667,14 +667,14 @@ export function DesignAgency() {
               initial="hidden"
               whileInView="visible"
               viewport={viewport.once}
-              className="mx-auto grid max-w-5xl gap-4 py-12 lg:grid-cols-2"
+              className="mx-auto flex snap-x snap-mandatory gap-4 overflow-x-auto py-12 lg:grid lg:max-w-5xl lg:grid-cols-2 lg:overflow-visible [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
               {TESTIMONIALS.map((t) => (
                 <motion.div
                   key={t.author}
                   variants={variants.fadeUp}
                   whileHover={{ y: -8, transition: transitions.springSnappy }}
-                  className="flex flex-col justify-between rounded-2xl border border-border p-6"
+                  className="flex w-[300px] shrink-0 snap-center flex-col justify-between rounded-2xl border border-border p-6 sm:w-[350px] lg:w-auto"
                   style={{
                     backgroundColor: colors.surface.elevated,
                     boxShadow: shadows.card.rest,
