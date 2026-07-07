@@ -77,10 +77,10 @@ export function CoursesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="mx-auto mt-12 flex w-full snap-x snap-mandatory overflow-x-auto gap-4 pb-8 md:mt-16 md:grid md:max-w-7xl md:grid-cols-2 md:gap-8 lg:grid-cols-3 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="mx-auto mt-8 pt-4 flex w-full snap-x snap-mandatory overflow-x-auto gap-4 pb-8 md:mt-16 md:grid md:max-w-7xl md:grid-cols-2 md:gap-8 lg:grid-cols-3 md:overflow-visible md:pb-0 md:pt-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {courses.map((course) => (
-            <motion.div key={course.id} variants={cardVariants} className="h-full w-[310px] shrink-0 snap-center sm:w-[350px] md:w-auto md:shrink">
+            <motion.div key={course.id} variants={cardVariants} className="h-full w-[280px] shrink-0 snap-center sm:w-[320px] md:w-auto md:shrink">
               <CourseCard
                 title={course.title}
                 classLevel={course.classLevel}

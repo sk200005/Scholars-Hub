@@ -224,7 +224,7 @@ export function DesignAgency() {
   const toggleMenu = () => setIsMenuOpen((v) => !v)
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <main className="flex min-h-screen flex-col overflow-clip bg-background">
 
       {/* ── Header ──────────────────────────────────────────────────────────── */}
       <motion.header
@@ -967,6 +967,6 @@ export function DesignAgency() {
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   )
 }
