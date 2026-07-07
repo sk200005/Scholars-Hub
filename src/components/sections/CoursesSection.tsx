@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { SectionHeader } from "@/components/ui/section-header"
 import { CourseCard } from "@/components/ui/course-card"
 import { Tiles } from "@/components/ui/tiles"
+import { Button } from "@/components/ui/button"
 
 export function CoursesSection() {
   const containerVariants = {
@@ -76,10 +77,10 @@ export function CoursesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="mx-auto mt-12 flex w-full snap-x snap-mandatory overflow-x-auto gap-4 pb-8 md:mt-16 md:grid md:max-w-7xl md:grid-cols-2 md:gap-8 lg:grid-cols-3 md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {courses.map((course) => (
-            <motion.div key={course.id} variants={cardVariants} className="h-full">
+            <motion.div key={course.id} variants={cardVariants} className="h-full w-[310px] shrink-0 snap-center sm:w-[350px] md:w-auto md:shrink">
               <CourseCard
                 title={course.title}
                 classLevel={course.classLevel}
@@ -89,6 +90,16 @@ export function CoursesSection() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* View All Courses Button */}
+        <div className="mt-4 flex justify-center md:mt-12">
+          <Button 
+            variant="outline" 
+            className="w-full max-w-sm rounded-full border-2 border-[#0066FF] py-6 text-[15px] font-bold text-[#1A1A1A] hover:bg-[#0066FF]/5 md:w-auto md:px-12"
+          >
+            View all courses
+          </Button>
+        </div>
       </div>
     </section>
   )

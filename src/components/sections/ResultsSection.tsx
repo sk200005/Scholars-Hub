@@ -6,6 +6,7 @@ import { motion, useInView, animate, useMotionValue, useAnimationFrame } from "f
 import { SectionHeader } from "@/components/ui/section-header"
 import { colors } from "@/lib/constants/colors"
 import { wrap } from "framer-motion"
+import { ChevronRight } from "lucide-react"
 
 // ─── Data Types & Source ──────────────────────────────────────────────────
 type FilterType = "ALL" | "NEET" | "JEE" | "CET"
@@ -236,51 +237,64 @@ export function ResultsSection() {
           onDrag={handleDrag}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="flex w-max cursor-grab active:cursor-grabbing items-center gap-6 px-4 md:gap-8"
+          className="grid w-max cursor-grab active:cursor-grabbing grid-rows-2 grid-flow-col auto-cols-max gap-4 px-4 pb-4 md:flex md:flex-row md:items-center md:gap-8"
         >
           {/* We render the filtered items twice to create the seamless illusion */}
           {[...filteredResults, ...filteredResults].map((item, index) => (
             <motion.div
               key={`${item.id}-${index}`}
-              className="group relative flex w-[220px] shrink-0 flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl md:w-[320px]"
+              className="group relative flex h-[130px] w-[280px] shrink-0 flex-row overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md md:h-auto md:w-[320px] md:flex-col md:hover:-translate-y-2 md:hover:shadow-xl"
               style={{ border: `1px solid ${colors.border.DEFAULT}` }}
               whileHover={{ 
                 borderColor: colors.primary.DEFAULT, 
-                borderWidth: "1px" 
               }}
             >
-              {/* Card Image */}
-              <div className="relative h-[200px] md:h-[280px] w-full overflow-hidden bg-muted/50">
+              {/* Image Container */}
+              <div className="relative w-[110px] shrink-0 bg-[#E8F0FE] md:h-[280px] md:w-full md:bg-muted/50">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 220px, 320px"
+                  className="object-cover object-bottom transition-transform duration-500 md:group-hover:scale-105"
+                  sizes="(max-width: 768px) 110px, 320px"
                 />
                 
-                {/* Category Badge overlay */}
+                {/* Mobile Badge */}
+                <div className="absolute bottom-2 left-1/2 w-[90%] -translate-x-1/2 rounded-full bg-[#1A1A1A] px-1 py-1 text-center text-[9px] font-bold text-white md:hidden">
+                  {item.exam}
+                </div>
+                
+                {/* Desktop Badge */}
                 <div 
-                  className="absolute bottom-0 left-0 w-full py-2 text-center text-xs font-bold uppercase tracking-wider"
+                  className="absolute bottom-0 left-0 hidden w-full py-2 text-center text-xs font-bold uppercase tracking-wider md:block"
                   style={{ backgroundColor: colors.foreground.DEFAULT, color: colors.foreground.inverse }}
                 >
                   {item.exam}
                 </div>
               </div>
 
-              {/* Card Content */}
-              <div className="flex flex-col items-center justify-center space-y-2 p-6 text-center">
-                <h4 className="text-xl font-bold" style={{ color: colors.foreground.DEFAULT }}>
-                  {item.name}
-                </h4>
-                <p className="text-sm font-medium" style={{ color: colors.foreground.muted }}>
-                  Classroom Course
-                </p>
-                <div 
-                  className="mt-2 text-2xl font-black"
-                  style={{ color: colors.primary.DEFAULT }}
-                >
-                  {item.rank}
+              {/* Content Container */}
+              <div className="flex flex-1 flex-col justify-between p-3 pl-4 text-left md:items-center md:justify-center md:space-y-2 md:p-6 md:text-center">
+                <div className="md:flex md:flex-col md:items-center">
+                  <h4 className="text-[14px] font-bold leading-tight md:text-xl" style={{ color: colors.foreground.DEFAULT }}>
+                    {item.name}
+                  </h4>
+                  <p className="mt-1 text-[10px] md:mt-0 md:text-sm md:font-medium" style={{ color: colors.foreground.muted }}>
+                    Classroom Course
+                  </p>
+                  <p className="text-[10px] md:hidden" style={{ color: colors.foreground.muted }}>
+                    {item.exam}
+                  </p>
+                </div>
+                
+                <div className="flex items-end justify-between md:mt-2 md:justify-center">
+                  <div className="text-xl font-black text-[#0066FF] md:text-2xl" style={{ color: colors.primary.DEFAULT }}>
+                    {item.rank}
+                  </div>
+                  {/* The arrow is only in the mobile design */}
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full border border-[#0066FF] text-[#0066FF] md:hidden">
+                    <ChevronRight size={12} strokeWidth={3} />
+                  </div>
                 </div>
               </div>
             </motion.div>
